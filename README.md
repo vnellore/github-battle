@@ -1,4 +1,4 @@
-# github-battle
+# README
 
 Check [Wiki](https://github.com/vnellore/github-battle/wiki) for setting up ReactJS from scratch
 
