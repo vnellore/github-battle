@@ -1,5 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var PropTypes = require('prop-types')
+
 require('./index.css');
 
 class User extends React.Component {
@@ -32,14 +34,19 @@ class User extends React.Component {
   }
 }
 
+User.propTypes = {
+  name: PropTypes.string.isRequired
+}
+
 ReactDOM.render(
   <User 
-  name="Harry Potter" 
+  name={ "Harry Potter" }
   contacts={[{ name: 'Ron Weasley', friend: true },
               {name: 'Draco Malfoy', friend: false},
               {name: 'Severus Snape', friend: false},
               {name: 'Hermione Granger', friend: true},
-              {name: 'Luna Lovegood', friend: true}
+              {name: 'Luna Lovegood', friend: true},
+              {name: 'Tom Riddle', friend: false}
             ]}
   possessions={['Invisibility Cloak', 'Marauder\'s Map']} 
             />,
