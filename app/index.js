@@ -2,47 +2,46 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 require('./index.css');
 
-class Avatar extends React.Component {
+class User extends React.Component {
   render() {
-    return (
-      <img src={this.props.img} />
-    )
-  }
-}
+    let friends = this.props.contacts.filter(function(contact){
+      return (contact.friend === true);
+    })
 
-class Label extends React.Component {
-  render() {
-    return (
-      <h1>Name: {this.props.name}</h1>
-    )
-  }
-}
+    let nonFriends = this.props.contacts.filter(function(contact){
+      return (contact.friend !== true);
+    })
 
-class ScreenName extends React.Component {
-  render() {
-    return (
-      <h3>Username: {this.props.username}</h3>
-    )
-  }
-}
-
-class Badge extends React.Component {
-  render() {
     return (
       <div>
-        <Avatar img={this.props.user.img}/>
-        <Label name={this.props.user.name}/>
-        <ScreenName username={this.props.user.username}/>
+        <h2>{this.props.name}</h2>
+        <h3> Friends </h3>
+        <ul>
+          {friends.map(function(contact){
+            return <li> {contact.name} </li>;
+          })}
+        </ul>
+        <h3> Non-friends </h3>
+        <ul>
+          {nonFriends.map(function(contact){
+            return <li> {contact.name} </li>;
+          })}
+        </ul>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Badge user={{
-    name: 'Vamsi Nellore',
-    img: 'https://octodex.github.com/images/labtocat.png',
-    username: 'vnellore'
-  }} />,
+  <User 
+  name="Harry Potter" 
+  contacts={[{ name: 'Ron Weasley', friend: true },
+              {name: 'Draco Malfoy', friend: false},
+              {name: 'Severus Snape', friend: false},
+              {name: 'Hermione Granger', friend: true},
+              {name: 'Luna Lovegood', friend: true}
+            ]}
+  possessions={['Invisibility Cloak', 'Marauder\'s Map']} 
+            />,
   document.getElementById('app')
 );
