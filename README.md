@@ -1,6 +1,6 @@
 # github-battle
 
-Check Wiki for setting up ReactJS from scratch
+Check [Wiki](https://github.com/vnellore/github-battle/wiki) for setting up ReactJS from scratch
 
 
 Steps to run
