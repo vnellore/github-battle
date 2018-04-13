@@ -1,6 +1,8 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-module.exports = {
+var webpack = require('webpack');
+
+var config = {
   entry: './app/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -14,12 +16,14 @@ module.exports = {
     ]
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'app/index.html'
     })
   ],
-  mode: "development"
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
 };
+
+module.exports = config;
